@@ -22,5 +22,18 @@ namespace LABORATORIO_5._1.Controllers
             var lista = await Task.Run(() => (new PaisDAO()).GetPaises());
             return Ok(lista);
         }
+
+        /* Definir los metodos InsertaCliente() */
+        [HttpPost("AddCliente")] public async Task<ActionResult<string>> InsertaCliente(Cliente reg)
+        {
+            var mensaje = await Task.Run(() => (new ClienteDAO()).Agregar(reg));
+            return Ok(mensaje);
+        }
+
+        [HttpPost("UpdateCliente")] public async Task<ActionResult<string>> ActualizaCliente(Cliente reg)
+        {
+            var mensaje = await Task.Run(() => (new ClienteDAO()).Actualizar(reg));
+            return Ok(mensaje);
+        }
     }
 }
